@@ -1,0 +1,10 @@
+---
+# Create a controller user with sudo and adds authorised keys
+
+- name: create controller user
+  user: name="{{ bootstrap_controller_user_username }}" shell=/bin/bash state=present comment="Controller" groups=sudo
+
+- name: add public keys for controller user
+  authorized_key: user="{{ bootstrap_controller_user_username }}" key="{{ lookup('file',item) }}"
+  with_fileglob:
+  - "{{ bootstrap_controller_user_authorized_keys_directory }}/*"
