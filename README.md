@@ -7,7 +7,7 @@ Performs minimal configuration required to enable management of a Digital Ocean 
 ## Overview
 
 * Configures passwordless sudo for ease of use from the terminal and when using automated tools (such as ansible).
-* Unless disabled, creates a new OS user, 'controller' for performing privileged actions (such as `apt-get install`) using sudo. Designed for use from the terminal and when using automated tools (such as ansible). The `authorized_keys` file for the user is set to contain any file in the `bootstrap_controller_user_authorized_keys_directory` directory.
+* Unless disabled, creates a new OS user, 'controller' for performing privileged actions (such as `apt-get install`) using sudo. Designed for use from the terminal and when using automated tools (such as ansible). The `authorized_keys` file for the user is set to contain any file in the `bootstrap_digitalocean_controller_user_authorized_keys_directory` directory.
 
 ## Availability
 
