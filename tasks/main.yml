@@ -1,8 +1,8 @@
 ---
 # Enable passwordless sudo and create controller user
 
-- name: enable passwordless sudo for sudoers
-  template: src=etc/sudoers.j2 dest=/etc/sudoers validate='visudo -cf %s'
+- name: ensure passwordless sudo for users in admin group
+  lineinfile: dest=/etc/sudoers regexp='^%admin ALL\=' line='%admin ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s' state=present
 
 - include: controller-user.yml
   when: bootstrap_digitalocean_controller_user_enabled == true
