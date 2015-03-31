@@ -1,6 +1,10 @@
 # Bootstrap DigitalOcean (`bootstrap-digitalocean`) - Changelog
 
-## 0.1.2 - March 2015
+## 0.1.3 - March 2015
+
+* Fixing sudoers file to allow Ansible to sudo as non-root users
+
+## 0.1.2 - March 2015 [YANKED!]
 
 * Fixing sudoers file to allow Ansible to sudo as non-root users
 
