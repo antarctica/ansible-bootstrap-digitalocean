@@ -5,7 +5,7 @@
   lineinfile: dest=/etc/sudoers regexp='^%admin ALL\=' line='%admin ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s' state=present
 
 - name: ensure passwordless sudo for users in sudoers group
-  lineinfile: dest=/etc/sudoers regexp='^%admin ALL\=' line='%sudo ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s' state=present
+  lineinfile: dest=/etc/sudoers regexp='^%sudo ALL\=' line='%sudo ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s' state=present
 
 - include: controller-user.yml
   when: bootstrap_digitalocean_controller_user_enabled == true
