@@ -2,7 +2,7 @@
 # Create a controller user with sudo and adds authorised keys
 
 - name: create controller user
-  user: name="{{ bootstrap_digitalocean_controller_user_username }}" shell=/bin/bash state=present comment="Controller" groups=sudo
+  user: name="{{ bootstrap_digitalocean_controller_user_username }}" shell=/bin/bash state=present comment="Controller" groups="sudo"
 
 - name: add public keys for controller user
   authorized_key: user="{{ bootstrap_digitalocean_controller_user_username }}" key="{{ lookup('file',item) }}"
