@@ -6,7 +6,6 @@ Performs minimal configuration required to enable management of a Digital Ocean 
 
 ## Overview
 
-* Configures passwordless sudo for ease of use from the terminal and when using automated tools (such as ansible).
 * Unless disabled, creates a new OS user, 'controller' for performing privileged actions (such as `apt-get install`) using sudo. Designed for use from the terminal and when using automated tools (such as ansible). The `authorized_keys` file for the user is set to contain any file in the `bootstrap_digitalocean_controller_user_authorized_keys_directory` directory.
 
 ## Availability
@@ -19,6 +18,8 @@ This role is designed for internal use but if useful can be shared publicly.
 
 #### Other requirements
 
+* As of version **1.0.0** any OS this role is applied to **MUST** ensure passwordless sudo is enabled for the "sudo" group and SSH Agent Forwarding is preserved when using sudo.
+    * If basing Droplets off the [BAS DigitalOcean image](https://stash.ceh.ac.uk/projects/BASWEB/repos/digitalocean-base-images), ensure you are using version **0.1.1** or higher, which implements these requirements.
 * Public keys which should be added to the `authorized_keys` file of the controller user, each key should be a separate file. Keys should be contained in  `bootstrap_digitalocean_controller_user_authorized_keys_directory`.
 
 ### Variables
