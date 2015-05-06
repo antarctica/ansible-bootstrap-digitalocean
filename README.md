@@ -6,7 +6,8 @@ Performs minimal configuration required to enable management of a Digital Ocean 
 
 ## Overview
 
-* Unless disabled, creates a new OS user, 'controller' for performing privileged actions (such as `apt-get install`) using sudo. Designed for use from the terminal and when using automated tools (such as ansible). The `authorized_keys` file for the user is set to contain any file in the `bootstrap_digitalocean_controller_user_authorized_keys_directory` directory.
+* Unless disabled, creates a new OS user, 'controller' for performing privileged actions (such as apt-get install) using sudo or reading log files.
+* If enabled, the authorized_keys file for the controller user is set to contain any file in the bootstrap_vagrant_controller_user_authorized_keys_directory directory.
 
 ## Availability
 
@@ -26,14 +27,15 @@ This role is designed for internal use but if useful can be shared publicly.
 
 * `bootstrap_digitalocean_controller_user_username`
 	* The username of the controller user, used for management tasks, if enabled
-	* This variable **must** be a valid unix username
+	* This variable **MUST** be a valid UNIX username
 	* Default: "controller"
 * `bootstrap_digitalocean_controller_user_enabled`
-	* If "true" a user for management tasks, termed a controller user, will be created.
-	* Default: true
+	* If "true" a user for management tasks, termed a controller user, will be created
+    * This is a binary variable and **MUST** be set to either "true" or "false" (without quotes).
+	* Default: "true"
 * `bootstrap_digitalocean_controller_user_authorized_keys_directory`
-	* Path relative to where this role is installed to the directory that contains files for the `authorized_keys` file of the controller user.
-	* This variable **must** point to a directory, it **must not** include a trailing `/`.
+	* The path, relative to where this role is installed, to the directory that contains the public key files to be added to the controller user's `authorized_keys` file.
+	* This variable **MUST** point to a directory, it **MUST NOT** include a trailing `/`.
 	* Default: "../../../public_keys"
 
 ## Contributing
